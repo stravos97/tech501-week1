@@ -1,15 +1,9 @@
 
 # Week 1 learning
 
-- [Week 1 learning](#week-1-learning)
-  - [How Markdown works](#how-markdown-works)
-    - [This is a subheading](#this-is-a-subheading)
-      - [Bullet Points](#bullet-points)
-      - [Numbered steps](#numbered-steps)
-      - [Bold and italics](#bold-and-italics)
-      - [Images](#images)
-      - [Links](#links)
-  - [How git works](#how-git-works)
+**Topics**
+* [Intro to Agile](agile/README.md)
+* Markdown
 
 ##  How Markdown works
 ### This is a subheading
