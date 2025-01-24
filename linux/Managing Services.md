@@ -124,7 +124,7 @@ Services in Linux are background processes that start automatically when the sys
 
 ### Starting and Enabling a Web Server
 
-- **Start Apache**:
+- **Start Nginx**:
 
     ```bash
     sudo systemctl start nginx

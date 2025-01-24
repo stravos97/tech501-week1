@@ -28,27 +28,6 @@ Redirecting output is one of the most common forms of redirection.
 
     This command appends the output to `file.txt` without overwriting the existing content.
 
-## Redirecting Standard Input (`<`)
-
-Redirecting input allows a command to take input from a file instead of the keyboard.
-
-- **Use a File as Input**:
-
-    ```bash
-    command < file.txt
-    ```
-
-    This feeds the contents of `file.txt` as input to the command.
-
-
-- **Redirect Output and Error Separately**:
-
-    ```bash
-    command > output.txt 2> error.log
-    ```
-
-    This sends standard output to `output.txt` and errors to `error.log`.
-
 ## Using Pipes (`|`)
 
 Pipes allow you to use the output of one command as the input for another.

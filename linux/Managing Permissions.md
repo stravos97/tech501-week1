@@ -53,7 +53,7 @@ This command lists files and directories with detailed information, including pe
 Example output:
 
 ```bash
--rw-r--r-- 1 user group 1234 Sep  1 12:34 example.txt
+-rw-r--r-- 1 user group 1234 Jan  24 12:34 example.txt
 ```
 
 ## Modifying Permissions with `chmod`
@@ -67,19 +67,7 @@ Permissions can be modified using symbolic notation:
 - **Add a Permission**: Use `+`
 
   ```bash
-  chmod u+x file.txt  # Add execute permission to the owner
-  ```
-
-- **Remove a Permission**: Use `-`
-
-  ```bash
-  chmod g-w file.txt  # Remove write permission from the group
-  ```
-
-- **Set a Permission Exactly**: Use `=`
-
-  ```bash
-  chmod o=r file.txt  # Set read permission only for others
+  chmod +x file.txt  # Add execute permission
   ```
 
 ### Numeric (Octal) Mode
@@ -146,18 +134,8 @@ sudo chown newowner:newgroup file.txt
 
 ### Making a Script Executable
 
-To allow a script file to be executed by its owner:
+To allow a script file to be executed:
 
 ```bash
-chmod u+x script.sh
+chmod +x script.sh
 ```
-
-### Protecting Sensitive Files
-
-To prevent anyone but the owner from accessing a sensitive file:
-
-```bash
-chmod 600 sensitive.txt
-```
-
-- `600` sets read and write permissions for the owner only (`rw-------`).
