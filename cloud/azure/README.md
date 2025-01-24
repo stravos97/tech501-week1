@@ -71,6 +71,41 @@ The cloud provides capacity and flexibility to create and manage resources effec
 - Review and create the VNet.
 - Set up subnets and assign resources as needed.
 
+
+### instructions for creating VM:
+
+Our virtual machine:
+Name: tech501-your_name-first-vm
+Region: UK South
+Security: standard
+Image (i.e. the OS that will go onto the machine): Ubuntu Pro 18.04 LTS Gen 2 [LTS means long term support for ~7 years]
+Size: Standard_B1s — 1 vcpu, 1 GiB [very important to set correctly because this impacts pricing]
+Administrator account: adminuser
+Use existing key pair stored in Azure (use the one with your name)
+Select inbound ports: allow HTTP and SSH traffic
+Disks tab:
+OS disk type: Standard SSD
+Networking tab:
+Virtual network: your named version
+Subnet: public-subnet
+Choose Delete public IP and NIC when VM is deleted option
+
+conect > select nateive ssh > start
+
+fill in window:
+- provide ssh key path
+- use provided code
+- paste into terminal,say 'yes' if asked permissions
+- can check that you are in the vm by running a command such as pwd
+
+### deleting vm
+
+home > resouce group > tech501
+filter for name
+delete: disk, network interface group, maybe the network security key, public IP, VM itself
+keep: virtual network + ssh group
+
+
 ---
 
 # Generating an RSA Key Pair
@@ -80,10 +115,49 @@ An RSA key pair is used for secure communication, such as connecting to servers 
 - A **private key** (kept secure by you).
 - A **public key** (shared with others to grant access).
 
-## Steps to Generate an RSA Key Pair
-1. Open your terminal.
-2. Run the following command:
+## Commands to create public and private keys for Azure
+* Create .ssh directory with `mkdir .ssh` (if it doesn't exist)
+* Use `ls -a` to check if .ssh directory was created successfully
+* Navigate into .ssh with `cd .ssh`
+* Verify current location with `pwd` (print working directory)
+* Generate SSH key pair using:
 
-   ```bash
-   ssh-keygen -t rsa -b 4096 -C "youremailaddress"
-   ```
+  ssh-keygen -t rsa -b 4096 -C "your.email@example.com"
+ 
+  This creates a public and private key pair
+* Enter file in which to save the key (/c/Users/intel/.ssh/id_rsa): tech501-haashim-az-key
+* Verify keys were created with `ls -l`
+* Public key will have .pub extension
+* Set correct permissions:
+  * `chmod 700 ~/.ssh`
+  * `chmod 600 ~/.ssh/id_rsa`
+  * `chmod 644 ~/.ssh/id_rsa.pub`
+* Start SSH agent: `eval $(ssh-agent -s)`
+* Add private key: `ssh-add ~/.ssh/id_rsa`
+
+### Azure Rules to Follow
+
+#### Creating a Vnet
+- Get approval before making resources
+- Add your name as Owner tag on everything
+- Only use "UK South" location (Since I'm in London)
+- It would be better to use a naming convention, IE: "tech501-haashim-demo-vnet"
+
+#### Using Azure and VMs
+- Work between 9am and 5pm
+- Ask trainer if you need to work late
+- Turn off VMs when:
+  - You're not using them
+  - Work day ends at 5pm
+
+#### Keeping Things Secure
+- Keep .pem files in .ssh folder
+- Keep .ssh folder out of Git
+
+#### Cleaning Up
+- You must delete resources you don't use
+- Check and remove:
+  - VMs you don't need
+  - Storage you don't use
+  - Network stuff you're done with
+  - Any other unused Azure items
