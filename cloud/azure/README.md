@@ -182,3 +182,21 @@ An RSA key pair is used for secure communication, such as connecting to servers 
   - Storage you don't use
   - Network stuff you're done with
   - Any other unused Azure items
+
+### Virtual Networking Architecture
+
+#### Underlay Network (Physical Foundation)
+- **Physical Structures**
+  * Fabric: All physical components required for virtual networking (switches, cables, routers)  
+  * TEP (Tunneling Endpoint): Interface where virtual networks connect to physical infrastructure  
+  * Routing/Bridges: Hybrid interfaces supporting both virtual and physical environments  
+  * No Intelligence: Provides basic connectivity without advanced logic  
+
+#### Overlay Network (Virtual Layer)  
+- **Segments**: Isolated Layer 2 network domains  
+- **Transport Zones**: Define physical host boundaries for virtual networks  
+- **Virtual Routers/Bridges**: Fully software-defined networking components  
+- **Micro-Segmentation**: Enables granular security controls through:  
+  * Embedded firewalls  
+  * Service insertion points  
+  * Resource-to-resource isolation policies  
